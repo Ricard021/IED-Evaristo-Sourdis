@@ -1,0 +1,830 @@
+@import url('https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+}
+
+body{
+    font-family: "Afacad Flux", serif;
+    background: #f3ecec;
+}
+
+/* Contenedor del interruptor */
+.toggle-container {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 30px;
+    padding: 0px 4px;
+    margin-left: 15px;
+    margin-right: 20px;
+  }
+  
+  /* Input oculto */
+  .toggle-container input {
+    display: none;
+  }
+  
+  /* Estilo del interruptor */
+  .toggle-label {
+    position: absolute;
+    cursor: pointer;
+    background-color: #ccc;
+    border-radius: 30px;
+    width: 100%;
+    height: 100%;
+    transition: background-color 0.3s;
+  }
+  
+  /* Estilo del deslizador */
+  .toggle-slider {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    background-color: #fff;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    transition: transform 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 3px;
+  }
+  
+  /* Íconos */
+  .sun-icon,
+  .moon-icon {
+    position: absolute;
+    font-size: 13px;
+    transition: opacity 0.2s;
+  }
+  
+  /* Mostrar el sol cuando el interruptor está en modo claro */
+  .sun-icon {
+    left: 3px;
+    opacity: 1;
+  }
+  
+  /* Mostrar la luna cuando el interruptor está en modo oscuro */
+  .moon-icon {
+    right: 4px;
+    opacity: 0;
+  }
+  
+  /* Cuando se activa (modo nocturno) */
+  input:checked + .toggle-label {
+    background-color: #dd0303; /* Color verde */
+  }
+  
+  input:checked + .toggle-label .toggle-slider {
+    transform: translateX(30px);
+  }
+  
+  /* Mostrar la luna y ocultar el sol cuando el interruptor está en modo oscuro */
+  input:checked + .toggle-label .sun-icon {
+    opacity: 0;
+  }
+  
+  input:checked + .toggle-label .moon-icon {
+    opacity: 1;
+  }
+  
+  /* Modo nocturno */
+  body.dark-mode {
+    background: linear-gradient(to bottom right, rgb(92, 1, 1), rgb(252, 157, 172)); /* Fondo oscuro */
+    color: #ffffff; /* Texto claro */
+  }
+  
+  body.dark-mode h2 {
+    color: #f3ecec;
+    text-shadow: 2px 2px 5px rgb(10, 10, 10);
+  }
+
+body.dark-mode .general-1 {
+    background-image:linear-gradient(rgba(0,0,0,0.7),rgba(5,0,0,0.405)),url(imagenes/imagen\ 5.jpg);
+}
+
+body.dark-mode .general-2 {
+    background-image:linear-gradient(rgba(0,0,0,0.7),rgba(5,0,0,0.405)),url(imagenes/imagen\ 1.jpg);
+}
+
+body.dark-mode .general-3 {
+    background-image:linear-gradient(rgba(0,0,0,0.7),rgba(5,0,0,0.405)),url(imagenes/imagen\ 2.jpg);
+}
+
+body.dark-mode .general-4 {
+    background-image:linear-gradient(rgba(0,0,0,0.7),rgba(5,0,0,0.405)),url(imagenes/imagen\ 8.jpg);
+}
+
+body.dark-mode .general-5 {
+    background-image:linear-gradient(rgba(0,0,0,0.7),rgba(5,0,0,0.405)),url(imagenes/imagen\ 4.webp);
+}
+
+body.dark-mode .general-6 {
+    background-image:linear-gradient(rgba(0,0,0,0.7),rgba(5,0,0,0.405)),url(imagenes/imagen\ 1.jpg);
+}
+
+body.dark-mode footer {
+    background:rgb(92, 1, 1);
+}
+
+  body.dark-mode  {
+    color: #ffffff; /* Color de los enlaces en modo nocturno */
+  }
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 12px;
+}
+
+.header {
+    background-image: linear-gradient(rgba(0,0,0,0.7),rgba(5, 0, 0, 0.405)),url(imagenes/imagen\ 2.jpg);
+    background-position: center;
+    background-repeat:  no-repeat;
+    background-size: cover;
+    min-height: 60vh;
+    align-items: center;
+    display: flex;
+    background-attachment: fixed;
+    height: 50vh;
+    color: #ffffff;
+    margin-bottom: 20px;
+    padding: 10px;
+    box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.2);
+}
+
+.header hr {
+    width: 4.5rem;
+    border-color: #e81818;
+    text-shadow: 8px 8px 11px #000;
+}
+
+hr {
+    display: block;
+    margin-block-start: 0.5em;
+    margin-block-end: 0.5em;
+    margin-inline-start: auto;
+    margin-inline-end: auto;
+    unicode-bidi: isolate;
+    overflow: hidden;
+    border-style: inset;
+    border-width: 1px;
+}
+
+/* background-position: center;
+background-repeat:  no-repeat;
+background-size: cover;
+min-height: 60vh;
+align-items: center;
+display: flex;
+background-attachment: fixed;
+height: 50vh;
+color: #ffffff;
+margin-bottom: 20px;
+padding: 10px; */
+
+/* Estilo general del menú */
+.menu {
+    position: fixed;
+    justify-content: space-between;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    z-index: 1000;
+    background: rgba(14, 1, 1, 0.7); /* Fondo negro semitransparente */
+    backdrop-filter: blur(5px); /* Efecto de desenfoque para fondo */
+    height: 50px;
+    box-sizing: border-box;
+    padding: 10px;
+}
+
+.menu a {
+    margin-left: 20px;
+}
+
+/* Estilo para el logo */
+.logo {
+    font-size: 13px;
+    font-weight: 650;
+    text-transform: uppercase;
+    font-stretch: wider;
+    text-shadow: 8px 8px 11px #3a0202;
+    display: flex;
+    align-items: center;  /* Alinea verticalmente el logo y el texto */
+    text-decoration: none;  /* Elimina el subrayado del enlace */
+}
+
+.logo-img {
+    width: 30px;  /* Ajusta el tamaño del logo */
+    height: auto;  /* Mantiene las proporciones de la imagen */
+    margin-right: 10px;  /* Espacio entre el logo y el texto */
+}
+
+/* Menú de navegación */
+.menu .navbar ul {
+    list-style: none;
+    padding: 3px;
+    margin: 0;
+    display: flex;
+}
+
+.menu .navbar ul li {
+    padding-left: 10px;
+}
+
+.menu .navbar ul li a {
+    display: inline-block;
+    padding: 5px 15px;
+    color: #ffffff;
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.menu .navbar ul li a:hover {
+    color: red;
+    background-color: #ffffff;
+    border-radius: 3px;
+}
+
+/* Estilo del checkbox (input) y el icono del menú */
+#menu {
+    display: none;
+}
+
+.menu-icon {
+    cursor: pointer;
+    display: none; /* Ocultar por defecto */
+    font-size: 30px;
+    color: white;
+}
+
+button {
+    padding: 10px 20px;
+    margin: 10px;
+    cursor: pointer;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    }
+    
+button:hover {
+    background-color: #0056b3;
+}
+
+.header-txt {
+    text-align: center;
+    margin-top: 12rem;
+    margin-bottom: 7rem;
+}
+
+.header-txt h1 {
+    font-size: 30px;
+    color: aliceblue;
+    text-transform: uppercase;
+}
+
+.header-txt p {
+    font-size: 70px;
+    color: aliceblue;
+}
+
+.btn-1 {
+    display: inline-block;
+    padding: 12px 40px;
+    border: 1px solid #fffdfc;
+    color: #ffffff;
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.btn-1:hover {
+    color: red;
+    background-color: #ffffff;
+}
+
+/* Estilo para el loader (pantalla de carga) */
+.loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Fondo semitransparente */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; /* Asegura que el loader esté encima del contenido */
+  }
+  
+  .loader img {
+    width: 150px; /* Ajusta el tamaño del logo */
+    animation: fadeIn 2s ease-in-out; /* Animación del logo */
+  }
+  
+  /* Animación de aparición del logo */
+  @keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  
+
+.general {
+    padding: 50px 0;
+    text-align: center;
+}
+
+.general-content {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 55px;
+    gap: 35px;
+}
+
+.general-1 {
+    background-image:linear-gradient(rgba(0,0,0,0.7),rgba(5, 0, 0, 0.905)),url(imagenes/imagen\ 5.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 400px;
+    padding: 150px 55px;
+    border-radius: 10px; 
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+.general-2 {
+    background-image:linear-gradient(rgba(0,0,0,0.7),rgba(5, 0, 0, 0.905)),url(imagenes/imagen\ 1.jpg);
+    background-position: 0%;
+    background-repeat: no-repeat;
+    height: 400px;
+    padding: 150px 55px;
+    border-radius: 10px; 
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+.general-3 {
+    background-image:linear-gradient(rgba(0,0,0,0.7),rgba(5, 0, 0, 0.905)),url(imagenes/imagen\ 2.jpg);
+    background-position:center;
+    background-repeat: no-repeat;
+    height: 400px;
+    padding: 150px 55px;
+    border-radius: 10px; 
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+.general-4 {
+    background-image:linear-gradient(rgba(0,0,0,0.7),rgba(5, 0, 0, 0.905)),url(imagenes/imagen\ 8.jpg);
+    background-position: center ;
+    background-repeat: no-repeat;
+    height: 400px;
+    padding: 150px 55px;
+    border-radius: 10px; 
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+.general-5 {
+    background-image:linear-gradient(rgba(0,0,0,0.7),rgba(5, 0, 0, 0.905)),url(imagenes/imagen\ 4.webp);
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 400px;
+    padding: 150px 55px;
+    border-radius: 10px; 
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+.general-6 {
+    background-image:linear-gradient(rgba(0,0,0,0.7),rgba(5, 0, 0, 0.905)),url(imagenes/imagen\ 1.jpg);
+    background-position: center ;
+    background-repeat: no-repeat;
+    height: 400px;
+    padding: 150px 55px;
+    border-radius: 10px; 
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+h2 {
+    font-size: 70px;
+    text-transform: uppercase;
+    color: #3a0202;
+    text-shadow: 2px 2px 5px rgb(138, 2, 2);
+}
+
+.txt h3 {
+    font-size: 18px;
+    color: #ffffff;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.txt p {
+    color: #ffffff;
+    font-size: 15px;
+}
+
+.info-1 {
+    background: linear-gradient(rgba(0,0,0,0.7),rgba(5,0,0,0.405)),url(/imagenes/imagen\ 1.jpg) no-repeat center/cover;
+    background-attachment: fixed;
+    height: 75vh;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.info-content{
+    width: 78%;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+}
+
+.info-content h2, span {
+    color: #ffffff;
+}
+
+.info-1-der h3{
+    text-transform: uppercase;
+    font-family: 'montaserrat',sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+}
+.info-1 hr{
+    border-color: #e81818;
+    margin-left: 0;
+    margin-bottom: 2.5rem;
+}
+
+.info-1 h2{
+    margin-right: 30px;
+    text-transform: uppercase;
+}
+
+.btn-rojo {
+    display: inline-block;
+    padding: 5px 25px;
+    margin-top: 15px;
+    border: 1px solid #fffdfc;
+    color: #ffffff;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.btn-rojo:hover {
+    color: red;
+    background-color: #ffffff;
+}
+
+.info-2 {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 55px;
+    gap: 35px;
+    padding: 0 10px;
+}
+
+.noticias-content {
+    display: flex;
+    flex-direction: column; /* Apilar los contenedores uno debajo del otro */
+    gap: 20px; /* Espacio entre los contenedores */
+}
+
+/* Título principal */
+.info-2, h2 {
+    font-size: 70px;
+    text-transform: uppercase;
+    color: #3a0202;
+    text-align: center;
+    margin-bottom: 40px; /* Un poco de margen abajo del título */
+}
+
+/* Estilo para cada contenedor de noticia */
+.noticias-1 {
+    background-image: linear-gradient(rgba(0,0,0,0.7), rgba(5, 0, 0, 0.605)), url(imagenes/imagen\ 8.jpg); /* Cambia la imagen según la clase */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover; /* Asegura que la imagen cubra todo el contenedor */
+    height: 150px; /* Alto ajustado */
+    padding: 10px 5px; /* Un poco de relleno interno */
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+    color: white; /* Asegura que el texto sea visible */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.noticias-2 {
+    background-image: linear-gradient(rgba(0,0,0,0.7), rgba(5, 0, 0, 0.605)), url(imagenes/escudo\ INEDES\ \(2\)\ \(1\).png); /* Cambia la imagen según la clase */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover; /* Asegura que la imagen cubra todo el contenedor */
+    height: 150px; /* Alto ajustado */
+    padding: 10px 5px; /* Un poco de relleno interno */
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+    color: white; /* Asegura que el texto sea visible */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+.noticias-3{
+    background-image: linear-gradient(rgba(0,0,0,0.7), rgba(5, 0, 0, 0.605)), url(imagenes/imagen\ 3.jpg); /* Cambia la imagen según la clase */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover; /* Asegura que la imagen cubra todo el contenedor */
+    height: 150px; /* Alto ajustado */
+    padding: 10px 5px; /* Un poco de relleno interno */
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+    color: white; /* Asegura que el texto sea visible */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Para los títulos de las noticias dentro de cada contenedor */
+.noticias-1 h3, .noticias-2 h3, .noticias-3 h3 {
+    font-size: 24px;
+    margin-bottom: 10px; /* Espacio debajo del título */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Un pequeño sombreado para el texto */
+}
+
+/* Para los párrafos dentro de las noticias */
+.noticias-1 p, .noticias-2 p, .noticias-3 p {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+/* Hacer que los contenedores ocupen el 100% del ancho con márgenes laterales */
+.noticias-1, .noticias-2, .noticias-3 {
+    width: calc(100% - 40px); /* 100% del ancho menos 40px para márgenes laterales */
+    margin: 0 auto; /* Centrar el contenedor */
+}
+
+.footer {
+    padding: 10px 0 0 0;
+    text-align: center;
+    background: #e81818;
+    width: 100%;
+    margin: auto;
+    flex-direction: row;
+    box-shadow: 5px -5px 8px rgba(0, 0, 0, 0.2);
+    
+}
+
+.footer-social a {
+    text-align: center;
+    color: #ffffff;
+}
+
+.social-social, a:hover {
+    color: #b7c405;
+}
+
+.footer-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer-logo {
+    width: 150px; /* Tamaño de la imagen */
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.social-logo {
+    color: #fff;
+    text-decoration: none;
+    font-size: 10px;
+    width: 15px;
+}
+
+.form {
+    margin-top: 30px;
+}
+
+.campo {
+    margin-right: 8px;
+    padding: 12px 20px;
+    border: 1px solid #1b0303;
+    border-radius: 6px;
+    outline: none;
+    color: #000;
+    box-shadow:1px 1px 4px 0 rgba(20, 20, 20, 0.2);
+}
+
+.campo::placeholder {
+    color: #e81818;
+}
+
+.btn-2 {
+    padding: 12px 20px;
+    border: 1px solid #f7eded;
+    border-radius: 6px;
+    color: #ffffff;
+    background-color: #3a0202;
+}
+
+.btn-2:hover {
+    background-color: #b7c405;
+    color: #ffffff;
+}
+
+.footer-txt {
+    margin-top: 100px;
+    border-top: 1px solid #000;
+    background-color: #805d5d;
+}
+
+.footer-txt p {
+    color: #000;
+    font-size: 15px;
+}
+
+/* Estilos para pantallas pequeñas (móviles) */
+@media screen and (max-width: 768px) {
+    .menu {
+        align-items: flex-start;
+        padding: 5px 30px;
+    }
+
+    .menu .navbar {
+        display: none;
+        flex-direction: column;
+        margin-top: 50px;
+        z-index: 1000;
+        width: 100%;
+        margin-right: 10px;
+        background: rgba(14, 1, 1, 0.7); /* Fondo negro semitransparente */
+        backdrop-filter: blur(5px);
+        border-radius: 6px;
+    }
+
+    h2 {
+        font-size: clamp(40px, 5vw, 48px); /* Escala el tamaño del texto según la pantalla */
+        line-height: 1.2; /* Ajusta el espaciado entre líneas */
+        word-wrap: break-word; /* Rompe palabras largas automáticamente */
+        white-space: normal;
+    }
+
+    .menu .logo {
+        position: fixed; 
+    }
+
+    .menu #menu:checked + .menu-icon + .navbar {
+        display: flex;
+    }
+
+    .menu-icon {
+        display: block;
+        align-items: flex-start;
+        position: fixed;
+        right: 30px;     /* Distancia desde la derecha */
+        z-index: 1000; 
+    }
+
+    .navbar ul {
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+    }
+
+    .navbar ul li {
+        padding: 10px 0;
+        z-index: 1000;
+    }
+
+    .general-content h3 {
+        margin-bottom: 10px;
+        margin-top: -100px;
+    }
+
+    .general-content {
+        flex-direction: column;
+        align-items: center;
+        align-content: center;
+        padding: 20px 70px 0 70px;
+    }
+
+    .general-content p {
+        font-size: 15px;
+    }
+
+    .general .txt {
+        text-align: center;
+        align-content: center;
+    }
+
+    .header-txt h1 {
+        font-size: 24px;
+    }
+
+    .header-txt p {
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+
+    .info-1 {
+        display: inline-block; /* Ajusta el ancho y alto según el contenido */
+        padding: 10px; /* Espaciado interno */
+        box-sizing: border-box; /* Incluye el padding y borde dentro del tamaño */
+        max-width: 100%; /* Evita que se desborde horizontalmente */
+    }
+
+
+    .info-1 p {
+        margin-bottom: 12px;
+    }
+
+    .info-1 h2 {
+        font-size: 50px; 
+    }
+
+    .info-1 h3{
+        margin-top: -45px;
+    }
+
+    .toggle-container {
+        margin-left: 42px;
+        margin-bottom: 20px;
+    }
+
+    .btn-1 {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+
+    .info-2 {
+        flex-direction: column;
+    }
+
+    .info-2 p {
+        font-size: 9px;
+        margin-top: 10px;
+    }
+
+    .info-2 h3 {
+        font-size: 20px;
+        text-align: center;
+    }
+
+    .btn-rojo {
+        padding: 5px 8px;
+        font-size: 14px;
+        text-align: center;
+    }
+
+    .form {
+        flex-direction: column;
+        width: 9%;
+        white-space: normal;
+    }
+}
+
+/* Estilos para pantallas medianas (tabletas) */
+@media screen and (max-width: 1024px) {
+    .general-content {
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+        padding: 20px 70px 0 70px;
+    }
+
+    .info-content {
+        flex-direction: column;
+    }
+
+    .info-1 .mitad {
+        width: 100%;
+    }
+
+    .btn-1 {
+        padding: 12px 30px;
+        font-size: 14px;
+    }
+
+    .header {
+        height: auto;
+    }
+
+    .header-txt {
+        margin-top: 8rem;
+        margin-bottom: 4rem;
+    }
+}
+
